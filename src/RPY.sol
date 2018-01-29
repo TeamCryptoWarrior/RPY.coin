@@ -1,11 +1,11 @@
 pragma solidity ^0.4.18;
 
 import './Erc20Impl.sol';
-import './common/safemath.sol';
-import './common/owned.sol';
-import './sale/Payout.sol';
-import './sale/Presale.sol';
-import './payment/RPYPaymentRecipient.sol';
+import './RPYPaymentRecipient.sol';
+import './safemath.sol';
+import './owned.sol';
+import './Payout.sol';
+import './Presale.sol';
 
 contract RPY is owned, TokenERC20, Payout, Presale
 {
@@ -87,10 +87,14 @@ contract RPY is owned, TokenERC20, Payout, Presale
     
     // FOR CO-WORKER
     function payout() notInPresale public {
+        // WE CANNOT WITHDRAW ANY ETHERS DURING PRESALE PERIOD TO GUARANTEE THE REFUND
+        //   SEE THE `notInPresale` modifier.
         _payout();
     }
     // FOR CONTRACT OWNER
     function withdraw() onlyOwner notInPresale public {
+        // WE CANNOT WITHDRAW ANY ETHERS DURING PRESALE PERIOD TO GUARANTEE THE REFUND
+        //   SEE THE `notInPresale` modifier.
         _withdraw();
     }
 }
