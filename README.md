@@ -2,5 +2,3 @@
 <p align="center">
   RPY coin and its payment system.
 </p>
-====
-
