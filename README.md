@@ -1,4 +1,4 @@
 <p align="center"><b>RPY</b></p>
 <p align="center">
-  RPY coin and its payment system.
+  RPY coin and RPY payment system.
 </p>
